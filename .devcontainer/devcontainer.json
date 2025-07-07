@@ -1,24 +1,29 @@
 {
-  "name": "Java",
-  "image": "mcr.microsoft.com/devcontainers/java:1-21",
-  "features": {
-    "ghcr.io/devcontainers/features/java:1": {
-      "version": "none",
-      "installMaven": "true",
-      "mavenVersion": "3.8.6",
-      "installGradle": "false"
-    }
+  "name": "Java 17 & Maven DevContainer",
+  "build": {
+    "dockerfile": "Dockerfile"
   },
   "customizations": {
     "vscode": {
       "settings": {
+        "java.configuration.runtimes": [
+          {
+            "name": "JavaSE-17",
+            "path": "/usr/local/openjdk-17"
+          }
+        ],
+        "maven.executable.path": "/usr/bin/mvn",
+        "java.compile.nullAnalysis.mode": "automatic"
       },
       "extensions": [
         "vscjava.vscode-java-pack",
-        "vscjava.vscode-maven",
-        "pivotal.vscode-spring-boot"
+        "pivotal.vscode-spring-boot",
+        "test-adapter.java",
+        "richardwillis.vscode-gradle"
       ]
     }
   },
-  "forwardPorts": [8080]
+  "forwardPorts": [
+    8080
+  ]
 }
